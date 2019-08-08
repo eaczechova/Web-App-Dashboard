@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web App Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Your<span>App</span><sup>TM</sup></h1>
+      <div>
+        <img src="icons/icon-bell.svg" alt="Bell icon" height="87px" width="100px">
+      </div>
+      <img src="images/member-2.jpg" alt="Profile picture">
+      <h3>Josh Sullivan</h3>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href=""><img src="icons/icon-dashboard.svg" alt=""></a>
+        </li>
+        <li>
+          <a href=""><img src="icons/icon-members.svg" alt=""></a>
+        </li>
+        <li>
+          <a href=""><img src="icons/icon-visits.svg" alt=""></a>
+        </li>
+        <li>
+          <a href=""><img src="icons/icon-settings.svg" alt=""></a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div class="main-header">
+        <h2 class="headline">Dashboard</h2>
+        <div class="main-header-search">
+          <input type="search" placeholder="Search..."/>
+        </div>
+      </div>
+      <div class="alert" id="alert">
+        <!-- JS will place alert here. -->
+      </div>
+      <section class="traffic">
+        <div class="traffic-header">
+          <h3>Traffic</h3>
+          <ul class="traffic-nav">
+            <li class="traffic-nav-link">Hourly</li>
+            <li class="traffic-nav-link">Daily</li>
+            <li class="traffic-nav-link">Weekly</li>
+            <li class="traffic-nav-link">Monthly</li>
+          </ul>
+        </div>
+        <div class="widget-container-full">
+          <canvas id="traffic-chart">
+
+          </canvas>
+        </div>
+
+      </section>
+      <section class="daily">
+        <h3>Daily Traffic</h3>
+        <div class="widget-container">
+          <canvas id="daily-chart">
+
+          </canvas>
+        </div>
+      </section>
+      <section class="daily">
+        <h3>Mobile Users</h3>
+        <div class="widget-container">
+          <canvas id="mobile-chart">
+
+          </canvas>
+        </div>
+      </section>
+      <section class="social">
+        <div class="social-container">
+          <div class="social-image">
+
+          </div>
+          <div class="social-text">
+            <p>Twitter</p>
+            <p>10,345</p>
+          </div>
+        </div>
+        <div class="social-container">
+          <div class="social-image">
+
+          </div>
+          <div class="social-text">
+            <p>Facebook</p>
+            <p>8,739</p>
+          </div>
+        </div>
+        <div class="social-container">
+          <div class="social-image">
+
+          </div>
+          <div class="social-text">
+            <p>Google+</p>
+            <p>2,530</p>
+          </div>
+        </div>
+      </section>
+      <section class="members">
+        <h3>New Members</h3>
+        <div class="member-container">
+          <img src="images/member-1.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Victoria Chambers</p>
+            <a href="#">victoria.chambers80@example.com</a>
+          </div>
+          <p>10/10/15</p>
+        </div>
+        <div class="member-container">
+          <img src="images/member-2.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Victoria Chambers</p>
+            <a href="#">victoria.chambers80@example.com</a>
+          </div>
+          <p>10/10/15</p>
+        </div>
+        <div class="member-container">
+          <img src="images/member-3.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Victoria Chambers</p>
+            <a href="#">victoria.chambers80@example.com</a>
+          </div>
+          <p>10/10/15</p>
+        </div>
+        <div class="member-container">
+          <img src="images/member-4.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Victoria Chambers</p>
+            <a href="#">victoria.chambers80@example.com</a>
+          </div>
+          <p>10/10/15</p>
+        </div>
+      </section>
+      <section class="activity">
+        <h3>Recent Activity</h3>
+        <div class="activity-container">
+          <img src="images/member-1.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Victoria Chambers commented on YouApp's SEO Tips</p>
+            <p>4 hours ago</p>
+          </div>
+          <p></p>
+        </div>
+        <div class="activity-container">
+          <img src="images/member-2.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Dalw Byrd likes the post Facebook's Changes for 2016</p>
+            <p>5 hours ago</p>
+          </div>
+          <p></p>
+        </div>
+        <div class="activity-container">
+          <img src="images/member-3.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Dawn Wood commented on Facebook's Facebook's Changes for 2016</p>
+            <p>4 hours ago</p>
+          </div>
+          <p></p>
+        </div>
+        <div class="activity-container">
+          <img src="images/member-4.jpg" alt="" class="profile-image">
+          <div class="member-text">
+            <p>Dan Olivier posted YouApp's SEO Tips</p>
+            <p>1 day ago</p>
+          </div>
+          <p></p>
+        </div>
+      </section>
+      <section class="message">
+        <h3>Message User</h3>
+        <form action="" class="message-container">
+          <input type="text" placeholder="Search for user" class="form-field" id="userField">
+          <textarea placeholder="Message for user" class="form-area" id= "messageField" ></textarea>
+          <button class="button-primary" id="send" >Send</button>
+        </form>
+      </section>
+      <section class="settings">
+        <h3>Settings</h3>
+        <select class="form-field" id="timezone">
+          <option disabled selected>Select a Timezone</option>
+          <option>Eastern</option>
+        </select>
+        <div class="settings-button" >
+          <button class="button-primary" id="save">Save</button>
+          <button class="button-disabled" id="cancel">Cancel</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
