@@ -200,6 +200,39 @@ body {
 }
 
 /***************************
+  ALERT
+***************************/
+.alert {
+  margin-top: 20px;
+  transition: all 2s ease;
+  height: 50px
+}
+.alert-banner {
+  display: flex;
+  color: #fff;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 3px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(96, 97, 177);
+  padding: 3px 20px;
+  font-size: 14px;
+  transition: all .5s ease;
+  height: 50px
+}
+
+.alert-banner p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.alert-banner-close {
+  font-size: 25px;
+  margin: 0;
+}
+
+/***************************
   TRAFFIC
 ***************************/
 
@@ -546,7 +579,7 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 
-  .traffic, .social {
+  .traffic, .social, .alert {
     grid-column: 1 / span 2;
   }
 
