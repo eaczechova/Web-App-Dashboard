@@ -1,3 +1,31 @@
+const notificationIcon = document.getElementById('notification-alert');
+const notificationList = document.querySelector('.notification-list');
+const bellIcon = document.querySelector('.header-bell-icon');
+let counter = 0;
+
+bellIcon.addEventListener('click', e => {
+  notificationList.style.display = 'flex';
+
+
+});
+
+bellIcon.addEventListener('click', e => {
+  const clickedElement = e.target;
+  const numberOfNotofication = notificationList.children.length;
+
+  if(clickedElement.classList.contains('notification-close')) {
+    e.target.parentElement.style.display = 'none';
+    counter++;
+  }
+  console.log(counter);
+  console.log(numberOfNotofication);
+
+
+  if(counter === numberOfNotofication ) {
+      notificationIcon.style.display = 'none';
+  }
+});
+
 const alert = document.getElementById('alert');
 
 alert.innerHTML = `

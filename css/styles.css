@@ -93,6 +93,52 @@ body {
 
 .header-bell-icon img {
   height: 1.4em;
+  transition: transform .2s ease;
+  position: relative;
+}
+
+.header-bell-icon img:hover {
+  transform: rotate(-25deg);
+}
+
+.notification-alert {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: rgb(112, 192, 125);
+  position: absolute;
+  top: 30px;
+  left: 1037px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.notification-list {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1000;
+  font-size: 11px;
+
+  background-color: #fff;
+  color: gray;
+  margin-right: 18px;
+  margin-top: -18px;
+  justify-content: space-between;
+}
+
+.notification-list li {
+  padding: 10px;
+  border-bottom: lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-close {
+  cursor: pointer;
 }
 
 .vertical-line {
@@ -202,11 +248,13 @@ body {
 /***************************
   ALERT
 ***************************/
+
 .alert {
   margin-top: 20px;
   transition: all 2s ease;
   height: 50px
 }
+
 .alert-banner {
   display: flex;
   color: #fff;
@@ -230,6 +278,7 @@ body {
 .alert-banner-close {
   font-size: 25px;
   margin: 0;
+  cursor: pointer;
 }
 
 /***************************
@@ -510,11 +559,20 @@ body {
   font-size: 14px;
   font-weight: 700;
   border: none;
+  cursor: pointer;
 }
 
 /***************************
   SETTINGS
 ***************************/
+
+.settings > select {
+  width: 90%;
+  margin: 0 auto 30px;
+  height: 40px;
+  color: lightgray;
+  cursor: pointer;
+ }
 
 .settings-button {
   width: 100%;
@@ -535,23 +593,12 @@ body {
   font-weight: 700;
   border: none;
   border-radius: 5px;
-}
-
-.settings > select {
-  width: 90%;
-  margin: 0 auto 30px;
-  height: 40px;
-  color: lightgray;
- }
-
-.notification {
-  display: flex;
-  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .switch-light {
   margin-bottom: 30px;
-
+  cursor: pointer;
 }
 
 .switch-light-text {
