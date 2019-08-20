@@ -38,14 +38,6 @@ body {
   background-color: rgb(96, 97, 177);
 }
 
-.nav {
-  grid-area: nav;
-
-  color: #fff;
-  background-color: rgb(60, 58, 95);
-  width: 100%;
-}
-
 .main {
   grid-area: main;
   display: grid;
@@ -108,7 +100,7 @@ body {
   background-color: rgb(112, 192, 125);
   position: absolute;
   top: 30px;
-  left: 1037px;
+  left: 1042px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -189,7 +181,7 @@ body {
   width: 35px;
 }
 
-.nav-item:hover  {
+.nav-item:hover {
   opacity: 1;
   border-bottom: 5px solid rgb(112, 192, 125);
 }
@@ -640,6 +632,7 @@ body {
 
   .widget-container-full {
     width: 90vw;
+    margin: 0 auto;
   }
 
   .widget-container-half {
