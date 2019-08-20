@@ -12,7 +12,6 @@ bellIcon.addEventListener('click', e => {
       notificationList.style.display = 'none';
     }
   }
-
 });
 
 bellIcon.addEventListener('click', e => {
@@ -145,18 +144,22 @@ loadChartData = (foo) => {
   });
 }
 
-
-
 const trafficNav = document.querySelector('.traffic-nav');
 trafficNav.addEventListener('click', (e) => {
+  let selectedClass = document.querySelector('.selected');
+  selectedClass.classList.remove('selected');
   if(e.target.innerText === 'Daily') {
     loadChartData(trafficDataDaily);
+    e.target.classList.add('selected');
   } else if (e.target.innerText === 'Monthly') {
     loadChartData(trafficDataMonthly);
+    e.target.classList.add('selected');
   } else if (e.target.innerText === 'Weekly') {
     loadChartData(trafficDataWeekly);
+    e.target.classList.add('selected');
   } else if (e.target.innerText === 'Hourly') {
     loadChartData(trafficDataHourly);
+    e.target.classList.add('selected');
   }
 });
 
@@ -261,8 +264,6 @@ send.addEventListener('click', function(e) {
     message.style.border = '1px solid lightgrey';
     user.style.border = '1px solid lightgrey';
   }
-
-
 });
 
 // Autocomplete
@@ -270,10 +271,25 @@ send.addEventListener('click', function(e) {
 let arrayOfMembers = [];
 const memeberTags = document.querySelectorAll('.members-text p');
 for (let i = 0 ; i < memeberTags.length; i++ ) {
-  arrayOfMembers.push(memeberTags[i].innerText);
+  arrayOfMembers.push(memeberTags[i].innerText.split(' '));
 }
-console.log(arrayOfMembers  );
 
+const userInputField = document.getElementById('userField');
+
+
+userInputField.addEventListener('keyup', (e) => {
+  if(e.keyCode === 8 || e.keyCode === 46) {
+    userInputField.value = '';
+  } else {
+    let userInput = userInputField.value.toLowerCase();
+    for(let i = 0 ; i < arrayOfMembers.length; i++ ) {
+      if(userInput === arrayOfMembers[i][0].toLowerCase() || userInput === arrayOfMembers[i][1].toLowerCase()) {
+        let match = arrayOfMembers[i].join(' ');
+        userInputField.value = arrayOfMembers[i].join(' ');
+      }
+    }
+  }
+});
 
 window.onload = function() {
   loadChartData(trafficDataHourly);
