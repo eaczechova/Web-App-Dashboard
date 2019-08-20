@@ -52,10 +52,12 @@ alert.addEventListener('click', e => {
 
 // CHARTS //
 
-  // line chart //
+// line chart //
 
 let trafficCanvas = document.getElementById('traffic-chart');
-  // hourly //
+
+// hourly //
+
 let trafficDataHourly = {
   labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
   datasets: [{
@@ -70,7 +72,8 @@ let trafficDataHourly = {
   }]
 };
 
-  // daily //
+// daily //
+
 let trafficDataDaily = {
   labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   datasets: [{
@@ -101,7 +104,8 @@ let trafficDataWeekly = {
   }]
 };
 
-  // monthly //
+// monthly //
+
 let trafficDataMonthly = {
   labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
   datasets: [{
@@ -260,13 +264,13 @@ send.addEventListener('click', function(e) {
     message.style.border = '1px solid red';
     window.alert('Message text is missing.');
   } else {
-    window.alert('Your message has been sent successfully!');
+    window.alert(`Your message has been sent successfully to ${userInput}!`);
     message.style.border = '1px solid lightgrey';
     user.style.border = '1px solid lightgrey';
   }
 });
 
-// Autocomplete
+// AUTOCOMPLETE
 
 let arrayOfMembers = [];
 const memeberTags = document.querySelectorAll('.members-text p');
@@ -291,6 +295,80 @@ userInputField.addEventListener('keyup', (e) => {
   }
 });
 
+// SETTINGS
+
+// Time Zones Selection
+
+let timeZonesList = document.getElementById('timezone');
+let timeZoneSelected;
+let optionsList = document.querySelectorAll('option');
+timeZonesList.addEventListener('change', (e) => {
+
+  timeZoneSelected = timeZonesList.value;
+  for(let i = 0; i < optionsList.length; i++ ) {
+
+    if(optionsList[i].hasAttribute('selected')) {
+      optionsList[i].removeAttribute('selected');
+    }
+    if(optionsList[i].textContent == timeZoneSelected) {
+      optionsList[i].setAttribute('selected', 'selected');
+      localStorage.setItem('timeZone', JSON.stringify(timeZoneSelected));
+    }
+  }
+  //
+  // console.log(v.parentNode);
+  // timeZonesList.options[timeZonesList.selectedIndex].setAttribute('selected', 'selected');
+  // timeZoneSelected = timeZonesList.options[timeZonesList.selectedIndex];
+  // localStorage.setItem('timeZone', timeZonesList.options[timeZonesList.selectedIndex]);
+  //
+  // let test = localStorage.getItem('timeZone');
+  // console.log(test);
+});
+
+function supportLocalStorage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  }
+  catch {
+    return false;
+  }
+}
+
+
 window.onload = function() {
   loadChartData(trafficDataHourly);
+  let timeZoneSet = localStorage.getItem('timeZone');
+  let optionsList = document.querySelectorAll('option');
+
+  for(let i = 0; i < optionsList.length; i++ ) {
+    if(optionsList[i].hasAttribute('selected')) {
+      optionsList[i].removeAttribute('selected');
+    }
+    if(optionsList[i].textContent == JSON.parse(timeZoneSet)) {
+
+      optionsList[i].setAttribute('selected', 'selected');
+    }
+  }
+  // console.log(timeZoneSet);
+  // LOCAL STORAGE
+  if(supportLocalStorage()) {
+
+    // console.log(localStorage.timezone);
+    //timezones
+
+  let slider1Value = document.querySelector('.switch-light');
+  const checkedElement = document.querySelector('.switch-light input');
+
+  slider1Value.addEventListener('click', (e) => {
+    if(checkedElement.checked === true) {
+      console.log("If element is checked:" ,checkedElement.checked);
+      checkedElement.checked = false;
+    } else if (checkedElement.checked === false) {
+      checkedElement.checked = true;
+      console.log("If element is NOT checked:" ,checkedElement.checked);
+    }
+  });
+}
+  // console.log(localStorage.timezone);
+
 };
