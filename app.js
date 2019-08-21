@@ -280,7 +280,6 @@ for (let i = 0 ; i < memeberTags.length; i++ ) {
 
 const userInputField = document.getElementById('userField');
 
-
 userInputField.addEventListener('keyup', (e) => {
   if(e.keyCode === 8 || e.keyCode === 46) {
     userInputField.value = '';
@@ -296,6 +295,13 @@ userInputField.addEventListener('keyup', (e) => {
 });
 
 // SETTINGS
+
+
+// E-mail Notification
+
+
+// Profile Settings
+
 
 // Time Zones Selection
 
@@ -315,14 +321,6 @@ timeZonesList.addEventListener('change', (e) => {
       localStorage.setItem('timeZone', JSON.stringify(timeZoneSelected));
     }
   }
-  //
-  // console.log(v.parentNode);
-  // timeZonesList.options[timeZonesList.selectedIndex].setAttribute('selected', 'selected');
-  // timeZoneSelected = timeZonesList.options[timeZonesList.selectedIndex];
-  // localStorage.setItem('timeZone', timeZonesList.options[timeZonesList.selectedIndex]);
-  //
-  // let test = localStorage.getItem('timeZone');
-  // console.log(test);
 });
 
 function supportLocalStorage() {
@@ -333,7 +331,6 @@ function supportLocalStorage() {
     return false;
   }
 }
-
 
 window.onload = function() {
   loadChartData(trafficDataHourly);
@@ -349,12 +346,10 @@ window.onload = function() {
       optionsList[i].setAttribute('selected', 'selected');
     }
   }
-  // console.log(timeZoneSet);
-  // LOCAL STORAGE
-  if(supportLocalStorage()) {
 
-    // console.log(localStorage.timezone);
-    //timezones
+  // LOCAL STORAGE
+
+  if(supportLocalStorage()) {
 
   let slider1Value = document.querySelector('.switch-light');
   const checkedElement = document.querySelector('.switch-light input');
@@ -369,6 +364,5 @@ window.onload = function() {
     }
   });
 }
-  // console.log(localStorage.timezone);
 
 };

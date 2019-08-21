@@ -86,8 +86,6 @@ body {
 .header-bell-icon img {
   height: 1.4em;
   transition: transform .2s ease;
-
-
 }
 
 .header-bell-icon img:hover {
@@ -100,7 +98,7 @@ body {
   height: 11px;
   background-color: rgb(112, 192, 125);
   position: absolute;
-  top: -13%;
+  top: -3%;
   left: 60%;
   border-radius: 50%;
   cursor: pointer;
@@ -110,6 +108,7 @@ body {
   display: none;
   flex-direction: column;
   list-style: none;
+  width: 200px;
   padding: 0;
   margin: 0;
   position: absolute;
