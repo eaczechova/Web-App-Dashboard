@@ -296,12 +296,49 @@ userInputField.addEventListener('keyup', (e) => {
 
 // SETTINGS
 
+const switchElements = document.querySelectorAll('.switch-light');
+const checkedElements = document.querySelectorAll('.switch-light input');
+
+const emailSwitch = switchElements[0];
+const profileSwitch = switchElements[1];
+
+const checkedEmail = checkedElements[0];
+const checkedProfile = checkedElements[1];
+
+let emailSetting = false;
+let profileSetting = false;
 
 // E-mail Notification
 
+emailSwitch.addEventListener('click', (e) => {
+  if(checkedEmail.checked === true) {
+    console.log("Element was checked and we set it to false:" ,checkedEmail.checked);
+    checkedEmail.checked = false;
+    emailSetting = false;
+    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
+  } else if (checkedEmail.checked === false) {
+    checkedEmail.checked = true;
+    emailSetting = true;
+    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
+    console.log("Element was NOT checked and we set it to true:" ,checkedEmail.checked);
+  }
+});
 
 // Profile Settings
 
+profileSwitch.addEventListener('click', (e) => {
+  if(checkedProfile.checked === true) {
+    console.log("Element was checked and we set it to false:" ,checkedProfile.checked);
+    checkedProfile.checked = false;
+    emailSetting = false;
+    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
+  } else if (checkedProfile.checked === false) {
+    checkedProfile.checked = true;
+    profileSetting = true;
+    localStorage.setItem('emailSetting', JSON.stringify(profileSetting));
+    console.log("Element was NOT checked and we set it to true:" ,checkedProfile.checked);
+  }
+});
 
 // Time Zones Selection
 
@@ -334,35 +371,27 @@ function supportLocalStorage() {
 
 window.onload = function() {
   loadChartData(trafficDataHourly);
-  let timeZoneSet = localStorage.getItem('timeZone');
-  let optionsList = document.querySelectorAll('option');
-
-  for(let i = 0; i < optionsList.length; i++ ) {
-    if(optionsList[i].hasAttribute('selected')) {
-      optionsList[i].removeAttribute('selected');
-    }
-    if(optionsList[i].textContent == JSON.parse(timeZoneSet)) {
-
-      optionsList[i].setAttribute('selected', 'selected');
-    }
-  }
 
   // LOCAL STORAGE
 
   if(supportLocalStorage()) {
+    let timeZoneSet = localStorage.getItem('timeZone');
+    let optionsList = document.querySelectorAll('option');
 
-  let slider1Value = document.querySelector('.switch-light');
-  const checkedElement = document.querySelector('.switch-light input');
+    for(let i = 0; i < optionsList.length; i++ ) {
+      if(optionsList[i].hasAttribute('selected')) {
+        optionsList[i].removeAttribute('selected');
+      }
+      if(optionsList[i].textContent == JSON.parse(timeZoneSet)) {
 
-  slider1Value.addEventListener('click', (e) => {
-    if(checkedElement.checked === true) {
-      console.log("If element is checked:" ,checkedElement.checked);
-      checkedElement.checked = false;
-    } else if (checkedElement.checked === false) {
-      checkedElement.checked = true;
-      console.log("If element is NOT checked:" ,checkedElement.checked);
+        optionsList[i].setAttribute('selected', 'selected');
+      }
     }
-  });
+
+    let emailSettings = localStorage.getItem('emailSetting');
+    checkedEmail.checked = emailSettings;
+    let profileSettings = localStorage.getItem('profileSetting');
+    checkedProfile.checked = profileSetting;
 }
 
 };
