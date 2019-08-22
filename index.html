@@ -225,7 +225,8 @@
       <section class="message">
         <h3 class="hg-3">Message User</h3>
         <form class="widget-container" autocomplete="off">
-          <input type="text" placeholder="Search for User" class="form-field" id="userField">
+          <input type="text" placeholder="Search for User" class="form-field" id="userField" list="users">
+           <datalist id="users"></datalist>
           <textarea placeholder="Message for User" class="form-area" id= "messageField" ></textarea>
           <button class="button-primary" id="send" >Send</button>
         </form>

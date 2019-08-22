@@ -270,27 +270,24 @@ send.addEventListener('click', function(e) {
 
 // AUTOCOMPLETE
 
-let arrayOfMembers = [];
+const dataSet = document.getElementById('users');
 const memeberTags = document.querySelectorAll('.members-text p');
-for (let i = 0 ; i < memeberTags.length; i++ ) {
-  arrayOfMembers.push(memeberTags[i].innerText.split(' '));
-}
-
 const userInputField = document.getElementById('userField');
 
-userInputField.addEventListener('keyup', (e) => {
-  if(e.keyCode === 8 || e.keyCode === 46) {
-    userInputField.value = '';
-  } else {
-    let userInput = userInputField.value.toLowerCase();
-    for(let i = 0 ; i < arrayOfMembers.length; i++ ) {
-      if(userInput === arrayOfMembers[i][0].toLowerCase() || userInput === arrayOfMembers[i][1].toLowerCase()) {
-        let match = arrayOfMembers[i].join(' ');
-        userInputField.value = arrayOfMembers[i].join(' ');
-      }
+function autocompleteOptions() {
+  let optionElement;
+  for (let i = 0 ; i < memeberTags.length; i++ ) {
+    optionElement = document.createElement('option');
+    optionElement.setAttribute('value', memeberTags[i].innerText);
+    if(dataSet.children.length === memeberTags.length) {
+      return
     }
+    dataSet.appendChild(optionElement);
   }
-});
+  return dataSet
+}
+
+userInputField.addEventListener('input', autocompleteOptions);
 
 // SETTINGS
 
