@@ -5,27 +5,25 @@ const numberOfNotofication = notificationList.children.length;
 let counter = numberOfNotofication;
 
 bellIcon.addEventListener('click', e => {
-  if(e.target.classList.contains('notification-alert')) {
+
     if(notificationList.style.display === 'none') {
       notificationList.style.display = 'flex';
     } else {
       notificationList.style.display = 'none';
     }
-  }
+
 });
 
-bellIcon.addEventListener('click', e => {
+notificationList.addEventListener('click', e => {
 
   const clickedElement = e.target;
   const numberOfNotofication = notificationList.children.length;
 
   if(clickedElement.classList.contains('notification-close')) {
+    e.stopPropagation()
     e.target.parentElement.style.display = 'none';
     counter--;
   }
-  console.log(counter);
-  console.log(numberOfNotofication);
-
 
   if(counter === 0 ) {
     notificationIcon.style.display = 'none';
@@ -305,39 +303,16 @@ const profileSwitch = switchElements[1];
 const checkedEmail = checkedElements[0];
 const checkedProfile = checkedElements[1];
 
-let emailSetting = false;
-let profileSetting = false;
-
-// E-mail Notification
+// E-mail Notification Settings
 
 emailSwitch.addEventListener('click', (e) => {
-  if(checkedEmail.checked === true) {
-    console.log("Element was checked and we set it to false:" ,checkedEmail.checked);
-    checkedEmail.checked = false;
-    emailSetting = false;
-    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
-  } else if (checkedEmail.checked === false) {
-    checkedEmail.checked = true;
-    emailSetting = true;
-    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
-    console.log("Element was NOT checked and we set it to true:" ,checkedEmail.checked);
-  }
+    localStorage.setItem('emailSetting', checkedEmail.checked);
 });
 
 // Profile Settings
 
 profileSwitch.addEventListener('click', (e) => {
-  if(checkedProfile.checked === true) {
-    console.log("Element was checked and we set it to false:" ,checkedProfile.checked);
-    checkedProfile.checked = false;
-    emailSetting = false;
-    localStorage.setItem('emailSetting', JSON.stringify(emailSetting));
-  } else if (checkedProfile.checked === false) {
-    checkedProfile.checked = true;
-    profileSetting = true;
-    localStorage.setItem('emailSetting', JSON.stringify(profileSetting));
-    console.log("Element was NOT checked and we set it to true:" ,checkedProfile.checked);
-  }
+    localStorage.setItem('profileSetting', checkedProfile.checked);
 });
 
 // Time Zones Selection
@@ -374,6 +349,12 @@ window.onload = function() {
 
   // LOCAL STORAGE
 
+  let emailSettings = localStorage.getItem('emailSetting');
+  checkedEmail.checked = JSON.parse(emailSettings);
+
+  let profileSettings = localStorage.getItem('profileSetting');
+  checkedProfile.checked = JSON.parse(profileSettings);
+
   if(supportLocalStorage()) {
     let timeZoneSet = localStorage.getItem('timeZone');
     let optionsList = document.querySelectorAll('option');
@@ -383,15 +364,9 @@ window.onload = function() {
         optionsList[i].removeAttribute('selected');
       }
       if(optionsList[i].textContent == JSON.parse(timeZoneSet)) {
-
         optionsList[i].setAttribute('selected', 'selected');
       }
     }
-
-    let emailSettings = localStorage.getItem('emailSetting');
-    checkedEmail.checked = emailSettings;
-    let profileSettings = localStorage.getItem('profileSetting');
-    checkedProfile.checked = profileSetting;
 }
 
 };
